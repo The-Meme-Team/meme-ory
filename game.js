@@ -1,27 +1,36 @@
 'use strict';
 
 // Global variables
+var memes = [];
 var displayMemes = [];
 var displayMemes1 = [];
 var displayMemes2 = [];
 var memeNumber = 8;
 
+// Global DOM variable
+var gameEl = document.getElementById('game');
+
 function Meme(id, name) {
   this.id = id;
   this.name = name;
+  memes.push(this);
 }
 Meme.prototype.makeCard = function() {
-  // boilerplate
+  var divEl = document.createElement('img');
+  console.log('makeCard: making element for ' + this.id);
+  divEl.setAttribute('src', 'memes/' + this.name + '.jpg');
+  console.log(divEl);
+  gameEl.appendChild(divEl);
 };
 
-var meme0 = new Meme(0, meme0);
-var meme1 = new Meme(1, meme1);
-var meme2 = new Meme(2, meme2);
-var meme3 = new Meme(3, meme3);
-var meme4 = new Meme(4, meme4);
-var meme5 = new Meme(5, meme5);
-var meme6 = new Meme(6, meme6);
-var meme7 = new Meme(7, meme7);
+var meme0 = new Meme(0, 'aliens');
+var meme1 = new Meme(1, 'bad-time');
+var meme2 = new Meme(2, 'kermit-tea');
+var meme3 = new Meme(3, 'memes-everywhere');
+var meme4 = new Meme(4, 'pepperidge-farm');
+var meme5 = new Meme(5, 'smug-spongebob');
+var meme6 = new Meme(6, 'success-kid');
+var meme7 = new Meme(7, 'trollface');
 
 // Function that picks a random number
 function random() {
@@ -29,7 +38,7 @@ function random() {
 };
 
 // Function that populates array
-function populateDisplay() {
+function populateDisplayMemes() {
   var item;
   for (var i = 0; i < memeNumber; i++) {
     do {
@@ -49,4 +58,13 @@ function populateDisplay() {
   };
   console.log(displayMemes);
 };
-populateDisplay();
+
+// Function to populate DOM with cards
+function populateCards() {
+  for (var i = 0; i < displayMemes.length; i++) {
+    memes[displayMemes[i]].makeCard();
+  }
+}
+
+populateDisplayMemes();
+populateCards();
