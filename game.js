@@ -13,14 +13,14 @@ Meme.prototype.makeCard = function() {
   // boilerplate
 };
 
+var meme0 = new Meme(0, meme0);
 var meme1 = new Meme(1, meme1);
 var meme2 = new Meme(2, meme2);
 var meme3 = new Meme(3, meme3);
 var meme4 = new Meme(4, meme4);
-var meme5 = new Meme(5, meme1);
-var meme6 = new Meme(6, meme2);
-var meme7 = new Meme(7, meme1);
-var meme8 = new Meme(8, meme8);
+var meme5 = new Meme(5, meme5);
+var meme6 = new Meme(6, meme6);
+var meme7 = new Meme(7, meme7);
 
 // Function that picks a random number
 function random() {
@@ -29,11 +29,22 @@ function random() {
 
 // Function that populates array
 function populateDisplay() {
-  // var item;
-  // for (var i = 0; i < (memeNumber); i++) {
-  //   do {
-  //     item = random();
-  //   } while (displayMemes.includes(item));
-  //   displayMemes.push(item);
-  // }
-}
+  var item;
+  for (var i = 0; i < memeNumber; i++) {
+    do {
+      item = random();
+    } while (displayMemes.includes(item));
+    displayMemes.push(item);
+  };
+  for (var j = 0; j < memeNumber; j++) {
+    do {
+      item = random();
+    } while (displayMemes2.includes(item));
+    displayMemes2.push(item);
+  };
+  for (var k = 0; k < memeNumber; k++) {
+    displayMemes.push(displayMemes2[k]);
+  };
+  console.log(displayMemes);
+};
+populateDisplay();
