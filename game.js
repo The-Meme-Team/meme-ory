@@ -2,6 +2,7 @@
 
 // Global variables
 var displayMemes = [];
+var displayMemes1 = [];
 var displayMemes2 = [];
 var memeNumber = 8;
 
@@ -25,7 +26,7 @@ var meme7 = new Meme(7, meme7);
 // Function that picks a random number
 function random() {
   return Math.floor(Math.random() * memeNumber);
-}
+};
 
 // Function that populates array
 function populateDisplay() {
@@ -33,8 +34,8 @@ function populateDisplay() {
   for (var i = 0; i < memeNumber; i++) {
     do {
       item = random();
-    } while (displayMemes.includes(item));
-    displayMemes.push(item);
+    } while (displayMemes1.includes(item));
+    displayMemes1.push(item);
   };
   for (var j = 0; j < memeNumber; j++) {
     do {
@@ -43,6 +44,7 @@ function populateDisplay() {
     displayMemes2.push(item);
   };
   for (var k = 0; k < memeNumber; k++) {
+    displayMemes.push(displayMemes1[k]);
     displayMemes.push(displayMemes2[k]);
   };
   console.log(displayMemes);
