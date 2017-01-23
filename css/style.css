@@ -1,0 +1,20 @@
+.logo-font {
+  font-family: 'Mouse Memoirs', sans-serif;
+}
+
+.text-black {
+ color: black;
+}
+
+.text-red {
+  color: red;
+}
+
+.top-nav {
+  border-bottom-style: groove;
+  margin-left: 33%;
+}
+
+.greet-font {
+  font-family: 'Great Vibes', cursive;
+}

@@ -1,0 +1,89 @@
+/*positions for index*/
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 56.250em;
+  margin: 0 auto;
+  padding: 0 0em;
+  box-sizing: border-box; }
+
+h3  {
+  margin: 0em;
+}
+
+h2 {
+  margin: -1.938em 0 0px 4.35em;
+}
+
+.logo-box {
+  height: 3.3em;
+  padding: 1em 0em 0em 0em;
+}
+
+.logo-img {
+  margin-top: 0.01em;
+  padding-right: 0.01em;
+}
+
+.logo-font {
+  padding: 0em 0.9em;
+  margin: -0.275em 0em 0.1em;
+  width: 9.938em;
+}
+
+.logo-text {
+  text-indent: .5em;
+}
+
+.top-blurb {
+ height: 7.4em;
+}
+
+.lineup {
+  margin-top: -0.15em;
+}
+
+.gap {
+  margin-left: 0.5em;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.block {
+  display: block;
+}
+
+.inblock {
+  display: inline-block;
+}
+
+.inline {
+  display: inline;
+}
+
+.footer-legal {
+  padding: 0.1em 0em;
+}
+
+.center {
+  position: center;
+}
+
+/*a, .top-nav {
+  margin: 0 3em 0 5em;
+}*/
