@@ -80,5 +80,35 @@ function populateCards() {
   }
 }
 
+function compareMatches() {
+// did user make two choices?
+  if (userChoices.length === 2) {
+    attempts++;
+    console.log(attempts + ' = attempts');
+    if (userChoices[0] === userChoices[1]) {
+      matches++;
+      console.log(matches + ' + current total matches made');
+    }
+    else{
+      console.log('no matches');
+    }
+  }
+};
+
+
+
+// function displayPics() {
+//   do {
+//     pickLeft = randNum();
+//     console.log(pickLeft + 'pickLeft');
+//   }
+//   while (previouslyShown.includes(pickLeft));
+//
+//   var leftProduct = productImages[pickLeft];
+//   pickLeftProduct.src = leftProduct.path;
+//   pickLeftProduct.alt = leftProduct.name;
+//   leftProduct.views += 1;
+//   console.log(productImages[pickLeft].views + 'views of left');
+
 populateDisplayMemes();
 populateCards();
