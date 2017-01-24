@@ -1,11 +1,16 @@
 /* set up font sizes and div widths*/
 
-img {
+#game img {
   max-width: 13.5em;
   min-width: 13.5em;
   max-height: 13.5em;
   min-height: 13.5em;
   border-style: inset;
+}
+
+.about-img {
+  height: 15em;
+  width: auto;
 }
 
 .full-width {
