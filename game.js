@@ -26,6 +26,7 @@ Meme.prototype.makeCard = function() {
   imgEl.addEventListener('click',function() { // adds event listener to all images created by this method
     imgEl.setAttribute('src', 'memes/' + name + '.jpg');
     console.log('i have been clicked: ' + id); // test code to show ID; can replace with something that pushes a value to our choices array
+    console.log(this);
   }, false);
   gameEl.appendChild(imgEl);
 };
