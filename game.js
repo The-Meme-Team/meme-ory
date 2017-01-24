@@ -30,6 +30,7 @@ Meme.prototype.makeCard = function() {
     imgEl.setAttribute('src', 'memes/' + name + '.jpg');
 
     userChoices.push(id);
+    compareMatches();
     //console.log('i have been clicked: ' + id); // test code to show ID; can replace with something that pushes a value to our choices array
     //console.log('i have been clicked: ' + id); // test code to show ID; can replace with something that pushes a value to our choices array
     //console.log(this);
@@ -87,11 +88,13 @@ function compareMatches() {
     console.log(attempts + ' = attempts');
     if (userChoices[0] === userChoices[1]) {
       matches++;
+      alert('You got a match!');
       console.log(matches + ' + current total matches made');
     }
     else{
       console.log('no matches');
     }
+    userChoices = [];
   }
 };
 
