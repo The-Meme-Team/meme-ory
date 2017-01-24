@@ -12,4 +12,5 @@ function usernameElementSubmit(event) {
   console.log(username);
   localStorage.data = JSON.stringify(username);
   console.log(localStorage.data);
+  window.location.href = "game.html";
 }
