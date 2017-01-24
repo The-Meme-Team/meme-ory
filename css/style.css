@@ -1,8 +1,13 @@
-
-.text-black {
- color: black;
+*{
+  background-color: #FCFEFF;
 }
 
+.text-dark {
+ color: #000066;
+}
+.text-medium {
+  color: #0AB5A9;
+}
 .text-red {
   color: red;
 }
@@ -12,14 +17,25 @@
 }
 
 .greet-font {
-  font-family: 'Fredericka the Great', cursive;
+  font-family: 'Fira Sans Condensed';
 }
-
+.font {
+  font-family: 'Fira Sans Condensed';
+}
+h2 {
+  font-family: 'Fira Sans Condensed';
+}
 a {
+<<<<<<< HEAD
   font-family: 'Great Vibes', cursive;
   text-decoration: none;
+=======
+  font-family: 'Open Sans';
 }
-
+p {
+  font-family: 'Open Sans';
+>>>>>>> 8902fbe254555b22e491ddc15f44f3de22c8a243
+}
 .logo-font {
   font-family: 'Mouse Memoirs', sans-serif;
 }

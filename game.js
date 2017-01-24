@@ -9,6 +9,7 @@ var memeNumber = 8;
 var userChoices = []; // records id of clicks
 var matches = 0; // records number of matches user has made
 var attempts = 0; // records number of attempts user has made
+var madeMatch = false;
 
 // Global DOM variable
 var gameEl = document.getElementById('game');
@@ -88,30 +89,18 @@ function compareMatches() {
     console.log(attempts + ' = attempts');
     if (userChoices[0] === userChoices[1]) {
       matches++;
+      madeMatch = true;
       alert('You got a match!');
       console.log(matches + ' + current total matches made');
+      console.log(madeMatch + ' = is this a match?');
     }
     else{
-      console.log('no matches');
+      madeMatch = false;
+      console.log(madeMatch + ' = made match matches');
     }
     userChoices = [];
   }
 };
-
-
-
-// function displayPics() {
-//   do {
-//     pickLeft = randNum();
-//     console.log(pickLeft + 'pickLeft');
-//   }
-//   while (previouslyShown.includes(pickLeft));
-//
-//   var leftProduct = productImages[pickLeft];
-//   pickLeftProduct.src = leftProduct.path;
-//   pickLeftProduct.alt = leftProduct.name;
-//   leftProduct.views += 1;
-//   console.log(productImages[pickLeft].views + 'views of left');
 
 populateDisplayMemes();
 populateCards();
