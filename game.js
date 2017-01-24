@@ -28,10 +28,16 @@ Meme.prototype.makeCard = function() {
   imgEl.setAttribute('class', this.id);
   //console.log(imgEl);
   imgEl.addEventListener('click',function() { // adds event listener to all images created by this method
+    console.log('i have been clicked: ' + id);
     imgEl.setAttribute('src', 'memes/' + name + '.jpg');
-
+    console.log(imgEl);
+    console.log(userChoices);
     userChoices.push(id);
-    compareMatches();
+    if (userChoices.length === 2) {
+      attempts++;
+      console.log(attempts + ' = attempts');
+      compareMatches();
+    }
     if (madeMatch === false) {
     }
   }, false);
@@ -83,24 +89,30 @@ function populateCards() {
 
 function compareMatches() {
 // did user make two choices?
-  if (userChoices.length === 2) {
-    attempts++;
-    console.log(attempts + ' = attempts');
-    if (userChoices[0] === userChoices[1]) {
-      matches++;
-      alert('You got a match!');
-      console.log(matches + ' + current total matches made');
-    } else {
-      var misMatch1 = document.getElementsByClassName(userChoices[0]);
-      var misMatch2 = document.getElementsByClassName(userChoices[1]);
-      console.log(misMatch1 + ' = first misMatch');
-      console.log(misMatch2 + ' = second misMatch');
-      console.log('no matches');
-
-      // document.getElementByClass(misMatch2);
+  // if (userChoices.length === 2) {
+  //   attempts++;
+  //   console.log(attempts + ' = attempts');
+  console.log('beginning compare function');
+  if (userChoices[0] === userChoices[1]) {
+    matches++;
+    alert('You got a match!');
+    console.log(matches + ' + current total matches made');
+  } else {
+    var misMatch1 = document.getElementsByClassName(userChoices[0]);
+    var misMatch2 = document.getElementsByClassName(userChoices[1]);
+    console.log('no matches');
+    for (var i = 0; i < misMatch1.length; i++) {
+      var imgEl = misMatch1[i];
+      imgEl.setAttribute('src', 'other-images/card-back.jpg');
     }
-    userChoices = [];
+    for (var i = 0; i < misMatch2.length; i++) {
+      var imgEl = misMatch2[i];
+      imgEl.setAttribute('src', 'other-images/card-back.jpg');
+    }
+    // document.getElementByClass(misMatch2);
   }
+  userChoices = [];
+  // }
 };
 
 populateDisplayMemes();
