@@ -16,11 +16,16 @@ function Meme(id, name) {
   memes.push(this);
 }
 Meme.prototype.makeCard = function() {
-  var divEl = document.createElement('img');
+  var imgEl = document.createElement('img');
+  var id = this.id;
   console.log('makeCard: making element for ' + this.id);
-  divEl.setAttribute('src', 'memes/' + this.name + '.jpg');
-  console.log(divEl);
-  gameEl.appendChild(divEl);
+  imgEl.setAttribute('src', 'memes/' + this.name + '.jpg');
+  imgEl.setAttribute('class', this.id);
+  console.log(imgEl);
+  imgEl.addEventListener('click',function() { // adds event listener to all images created by this method
+    console.log('i have been clicked: ' + id); // test code to show ID; can replace with something that pushes a value to our choices array
+  }, false);
+  gameEl.appendChild(imgEl);
 };
 
 var meme0 = new Meme(0, 'aliens');
