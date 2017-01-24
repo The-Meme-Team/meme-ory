@@ -3,10 +3,10 @@
 .wrapper {
   position: relative;
   width: 100%;
-  max-width: 56.250em;
+  max-width: 56.6em;
   margin: 0 auto;
   padding: 0 0em;
-  box-sizing: border-box; }
+}
 
 h3  {
   margin: 0em;
@@ -80,10 +80,20 @@ h2 {
   padding: 0.1em 0em;
 }
 
-.center {
-  position: center;
+.logo-center {
+  position: relative;
+  left: 4em;
+  top: 0.4em;
 }
 
-/*a, .top-nav {
-  margin: 0 3em 0 5em;
-}*/
+a {
+  position: relative;
+  left: 8em;
+  bottom: 2em;
+}
+
+.game-center {
+  position: relative;
+  left: 4em;
+  top: 0.4em;
+}
