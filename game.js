@@ -6,7 +6,9 @@ var displayMemes = [];
 var displayMemes1 = [];
 var displayMemes2 = [];
 var memeNumber = 8;
-var userChoices = [];
+var userChoices = []; // records id of clicks
+var matches = 0; // records number of matches user has made
+var attempts = 0; // records number of attempts user has made
 
 // Global DOM variable
 var gameEl = document.getElementById('game');
