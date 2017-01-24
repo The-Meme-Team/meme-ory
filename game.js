@@ -9,6 +9,7 @@ var memeNumber = 8;
 var userChoices = []; // records id of clicks
 var matches = 0; // records number of matches user has made
 var attempts = 0; // records number of attempts user has made
+var madeMatch = false;
 
 // Global DOM variable
 var gameEl = document.getElementById('game');
@@ -30,9 +31,9 @@ Meme.prototype.makeCard = function() {
     imgEl.setAttribute('src', 'memes/' + name + '.jpg');
 
     userChoices.push(id);
-    //console.log('i have been clicked: ' + id); // test code to show ID; can replace with something that pushes a value to our choices array
-    //console.log('i have been clicked: ' + id); // test code to show ID; can replace with something that pushes a value to our choices array
-    //console.log(this);
+    compareMatches();
+    if (madeMatch === false) {
+    }
   }, false);
   gameEl.appendChild(imgEl);
 };
@@ -79,6 +80,28 @@ function populateCards() {
     memes[displayMemes[i]].makeCard();
   }
 }
+
+function compareMatches() {
+// did user make two choices?
+  if (userChoices.length === 2) {
+    attempts++;
+    console.log(attempts + ' = attempts');
+    if (userChoices[0] === userChoices[1]) {
+      matches++;
+      alert('You got a match!');
+      console.log(matches + ' + current total matches made');
+    } else {
+      var misMatch1 = document.getElementsByClassName(userChoices[0]);
+      var misMatch2 = document.getElementsByClassName(userChoices[1]);
+      console.log(misMatch1 + ' = first misMatch');
+      console.log(misMatch2 + ' = second misMatch');
+      console.log('no matches');
+
+      // document.getElementByClass(misMatch2);
+    }
+    userChoices = [];
+  }
+};
 
 populateDisplayMemes();
 populateCards();
