@@ -3,7 +3,7 @@
 .wrapper {
   position: relative;
   width: 100%;
-  max-width: 56.6em;
+  max-width: 66em;
   margin: 0px auto;
   padding: 0 0em;
 }
@@ -82,7 +82,7 @@ h2 {
 .logo-center {
   position: relative;
   left: 4em;
-  top: 0.4em;
+  top: 0.3em;
 }
 
 a {

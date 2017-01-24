@@ -1,4 +1,4 @@
-*{
+* {
   background-color: #FCFEFF;
 }
 
@@ -26,15 +26,11 @@ h2 {
   font-family: 'Fira Sans Condensed';
 }
 a {
-<<<<<<< HEAD
-  font-family: 'Great Vibes', cursive;
-  text-decoration: none;
-=======
   font-family: 'Open Sans';
 }
 p {
   font-family: 'Open Sans';
->>>>>>> 8902fbe254555b22e491ddc15f44f3de22c8a243
+
 }
 .logo-font {
   font-family: 'Mouse Memoirs', sans-serif;
