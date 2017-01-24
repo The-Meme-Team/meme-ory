@@ -1,7 +1,11 @@
 /* set up font sizes and div widths*/
 
 img {
-  max-width: 100%;
+  max-width: 13.5em;
+  min-width: 13.5em;
+  max-height: 13.5em;
+  min-height: 13.5em;
+  border-style: inset;
 }
 
 .full-width {
@@ -9,7 +13,7 @@ img {
 }
 
 .half-width {
-  width: 43%
+  width: 18.5em;
 }
 
 header, main, footer {
@@ -17,8 +21,13 @@ header, main, footer {
   margin: 0 auto;
 }
 
+.logo-font {
+  font-size: 4em;
+}
+
 .top-nav {
-  height: 5em;
+  height: 2em;
+  margin: 5em 3em;
 }
 
 .size-9 {
