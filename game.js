@@ -6,6 +6,7 @@ var displayMemes = [];
 var displayMemes1 = [];
 var displayMemes2 = [];
 var memeNumber = 8;
+var userChoices = [];
 
 // Global DOM variable
 var gameEl = document.getElementById('game');
@@ -19,14 +20,17 @@ Meme.prototype.makeCard = function() {
   var imgEl = document.createElement('img');
   var id = this.id;
   var name = this.name;
-  console.log('makeCard: making element for ' + this.id);
+  //console.log('makeCard: making element for ' + this.id);
   imgEl.setAttribute('src', 'other-images/card-back.jpg');
   imgEl.setAttribute('class', this.id);
-  console.log(imgEl);
+  //console.log(imgEl);
   imgEl.addEventListener('click',function() { // adds event listener to all images created by this method
     imgEl.setAttribute('src', 'memes/' + name + '.jpg');
-    console.log('i have been clicked: ' + id); // test code to show ID; can replace with something that pushes a value to our choices array
-    console.log(this);
+
+    userChoices.push(id);
+    //console.log('i have been clicked: ' + id); // test code to show ID; can replace with something that pushes a value to our choices array
+    //console.log('i have been clicked: ' + id); // test code to show ID; can replace with something that pushes a value to our choices array
+    //console.log(this);
   }, false);
   gameEl.appendChild(imgEl);
 };
