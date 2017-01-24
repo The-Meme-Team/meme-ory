@@ -34,6 +34,7 @@ Meme.prototype.makeCard = function() {
     console.log(userChoices);
     userChoices.push(id);
     if (userChoices.length === 2) {
+      imgEl.setAttribute('src', 'memes/' + name + '.jpg');
       attempts++;
       console.log(attempts + ' = attempts');
       compareMatches();
