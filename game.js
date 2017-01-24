@@ -32,9 +32,8 @@ Meme.prototype.makeCard = function() {
 
     userChoices.push(id);
     compareMatches();
-    //console.log('i have been clicked: ' + id); // test code to show ID; can replace with something that pushes a value to our choices array
-    //console.log('i have been clicked: ' + id); // test code to show ID; can replace with something that pushes a value to our choices array
-    //console.log(this);
+    if (madeMatch === false) {
+    }
   }, false);
   gameEl.appendChild(imgEl);
 };
@@ -89,14 +88,16 @@ function compareMatches() {
     console.log(attempts + ' = attempts');
     if (userChoices[0] === userChoices[1]) {
       matches++;
-      madeMatch = true;
       alert('You got a match!');
       console.log(matches + ' + current total matches made');
-      console.log(madeMatch + ' = is this a match?');
-    }
-    else{
-      madeMatch = false;
-      console.log(madeMatch + ' = made match matches');
+    } else {
+      var misMatch1 = document.getElementsByClassName(userChoices[0]);
+      var misMatch2 = document.getElementsByClassName(userChoices[1]);
+      console.log(misMatch1 + ' = first misMatch');
+      console.log(misMatch2 + ' = second misMatch');
+      console.log('no matches');
+
+      // document.getElementByClass(misMatch2);
     }
     userChoices = [];
   }
