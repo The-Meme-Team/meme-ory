@@ -10,7 +10,7 @@ function usernameElementSubmit(event) {
 
   var userName = [event.target.playerName.value, 0];
   console.log(userName);
-  localStorage.data = JSON.stringify(userName);
-  console.log(localStorage.data);
+  localStorage.matchData = JSON.stringify(userName);
+  console.log(localStorage.matchData);
   window.location.href = 'game.html';
 }
