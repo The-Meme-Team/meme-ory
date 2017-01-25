@@ -14,7 +14,7 @@ var attempts = []; // records number of attempts user has made todo: determine i
 var endMatch = false;
 var userName = localStorage.getItem('userName');
 //add a global var to store the match data
-var matchData = localStorage.matchData; //todo: double check this var name
+var matchData = localStorage.getItem('matchData'); //todo: double check this var name
 
 // Global DOM variable
 var gameEl = document.getElementById('game');
@@ -96,7 +96,7 @@ function compareMatches() {
       // alert('You made a match!');  //todo: decide if removing this hurts flow.
       remove();
     } else {
-      // alert('Sorry, no match. Try again!'); //todo: decide if removing this hurts flow.
+      alert('Sorry, no match. Try again!'); //todo: decide if removing this hurts flow.
       var misMatch1 = document.getElementsByName(parseInt(userChoices[0]));
       console.log(misMatch1);
       switchCards(misMatch1);
