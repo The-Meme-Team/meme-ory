@@ -5,6 +5,7 @@ var memes = [];
 var displayMemes = [];
 var displayMemes1 = [];
 var displayMemes2 = [];
+var arrayName = [];
 var memeNumber = 8;
 var userChoices = []; // records id of clicks
 var matches = 0; // records number of matches user has made
@@ -19,24 +20,6 @@ function Meme(id, name) {
   this.name = name;
   memes.push(this);
 }
-Meme.prototype.makeCard = function() {
-  var imgEl = document.createElement('img');
-  var id = this.id;
-  var name = this.name;
-  //console.log('makeCard: making element for ' + this.id);
-  imgEl.setAttribute('src', 'other-images/card-back.jpg');
-  imgEl.setAttribute('class', this.id);
-  //console.log(imgEl);
-  imgEl.addEventListener('click',function() { // adds event listener to all images created by this method
-    imgEl.setAttribute('src', 'memes/' + name + '.jpg');
-
-    userChoices.push(id);
-    compareMatches();
-    if (madeMatch === false) {
-    }
-  }, false);
-  gameEl.appendChild(imgEl);
-};
 
 var meme0 = new Meme(0, 'aliens');
 var meme1 = new Meme(1, 'bad-time');
@@ -72,36 +55,74 @@ function populateDisplayMemes() {
     displayMemes.push(displayMemes2[k]);
   };
   console.log(displayMemes);
+  for (var n = 0; n < displayMemes.length; n++){
+    arrayName.push(memes[displayMemes[n]]);
+  }
 };
 
-// Function to populate DOM with cards
-function populateCards() {
-  for (var i = 0; i < displayMemes.length; i++) {
-    memes[displayMemes[i]].makeCard();
-  }
-}
+//function to make card
+function makeCard() {
+  for (var j = 0; j < arrayName.length; j++) {
+    var imgEl = document.createElement('img');
+    imgEl.setAttribute('src', 'other-images/card-back.jpg');
+    imgEl.setAttribute('class', arrayName[j].name);
+    imgEl.setAttribute('name', arrayName[j].id);
+    imgEl.addEventListener('click', click, false);
+    gameEl.appendChild(imgEl);
+  };
+};
 
+//functino to compare matches
 function compareMatches() {
 // did user make two choices?
   if (userChoices.length === 2) {
     attempts++;
     console.log(attempts + ' = attempts');
-    if (userChoices[0] === userChoices[1]) {
-      matches++;
-      alert('You got a match!');
-      console.log(matches + ' + current total matches made');
-    } else {
-      var misMatch1 = document.getElementsByClassName(userChoices[0]);
-      var misMatch2 = document.getElementsByClassName(userChoices[1]);
-      console.log(misMatch1 + ' = first misMatch');
-      console.log(misMatch2 + ' = second misMatch');
-      console.log('no matches');
-
-      // document.getElementByClass(misMatch2);
+    console.log('beginning compare function');
+  };
+  if (userChoices[0] === userChoices[1]) {
+    matches++;
+    //alert('You got a match!');
+    console.log(matches + ' + current total matches made');
+    remove();
+  } else {
+    var misMatch1 = document.getElementsByName(parseInt(userChoices[0]));
+    console.log(misMatch1);
+    for (var i = 0; i < misMatch1.length; i++) {
+      var imgEl = misMatch1[i];
+      imgEl.setAttribute('src', 'other-images/card-back.jpg');
+    };
+    var misMatch2 = document.getElementsByName(parseInt(userChoices[1]));
+    console.log(misMatch2);
+    for (var i = 0; i < misMatch2.length; i++) {
+      var imgEl = misMatch2[i];
+      imgEl.setAttribute('src', 'other-images/card-back.jpg');
     }
-    userChoices = [];
-  }
+    console.log('no matches');
+  };
+  userChoices = [];
 };
 
+//function to remove event listener
+function remove() {
+  var removeEl = document.getElementsByName(parseInt(userChoices[0]));
+  for (var j = 0; j < removeEl.length; j++){
+    var removeItemEl = removeEl[j];
+    removeItemEl.removeEventListener('click', click, false);
+  }
+}
+//event listener function
+function click() {
+  console.log(event.target);
+  var imgEl = event.target;
+  var classEl = imgEl.getAttribute('class');
+  var nameEl = imgEl.getAttribute('name');
+  console.log(nameEl);
+  imgEl.setAttribute('src', 'memes/' + classEl + '.jpg');
+  userChoices.push(nameEl);
+};
+
+//calling functions
 populateDisplayMemes();
-populateCards();
+makeCard();
+compareMatches();
