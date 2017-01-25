@@ -11,6 +11,7 @@
 .about-img {
   height: 15em;
   width: auto;
+  padding: 0em 1.2em 0em 1.3em;
 }
 
 .full-width {
@@ -19,6 +20,11 @@
 
 .half-width {
   width: 18.5em;
+}
+
+.about-blurb {
+  max-width: 40em;
+  min-height: 20em;
 }
 
 header, main, footer {
