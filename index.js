@@ -2,15 +2,15 @@
 
 var formEl = document.getElementById('playerUserName'); // get form element
 
-formEl.addEventListener('submit', usernameElementSubmit);
+formEl.addEventListener('submit', usernameElementSubmit, false);
 
 function usernameElementSubmit(event) {
   event.preventDefault(); // prevent default behavior of event. in this case reset page
   event.stopPropagation();
 
-  var userName = [event.target.playerName.value, 0];
+  var userName = event.target.playerName.value;
   console.log(userName);
-  localStorage.matchData = JSON.stringify(userName);
-  console.log(localStorage.matchData);
+  localStorage.setItem('userName', JSON.stringify(userName));
+  //console.log(localStorage.matchData);
   window.location.href = 'game.html';
 }
