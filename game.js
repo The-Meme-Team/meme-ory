@@ -6,13 +6,15 @@ var displayMemes = [];
 var displayMemes1 = [];
 var displayMemes2 = [];
 var arrayName = [];
+// change to not be a magic number
 var memeNumber = 8;
 var userChoices = []; // records id of clicks
 var matches = 0; // records number of matches user has made
-var attempts = []; // records number of attempts user has made
-var clicks = 0;
-var madeMatch = false;
-var username = localStorage.getItem('username');
+var attempts = []; // records number of attempts user has made todo: determine if this needs to be a num or an array
+var endMatch = false;
+var userName = localStorage.getItem('userName');
+//add a global var to store the match data
+var matchData = localStorage.matchData; //todo: double check this var name
 
 // Global DOM variable
 var gameEl = document.getElementById('game');
@@ -20,6 +22,7 @@ var gameEl = document.getElementById('game');
 function Meme(id, name) {
   this.id = id;
   this.name = name;
+  //possibly extranious
   this.attempts = attempts;
   memes.push(this);
 }
@@ -80,16 +83,20 @@ function compareMatches() {
 // did user make two choices?
   if (userChoices.length === 2) {
     attempts++;
-    localStorage.setItem('playerPersist', JSON.stringify(attempts, username));
+    //question: if we move this out might we have better, multiple rounds worth of data?
+    localStorage.setItem('playerPersist', JSON.stringify(matchData));
     console.log(attempts + ' = attempts');
     console.log('beginning compare function');
     if (userChoices[0] === userChoices[1]) {
       matches++;
       console.log(matches + ' + current total matches made');
-      alert('You made a match!');
+      if (matches === 8) {
+        endMatch = true;
+      }
+      // alert('You made a match!');  //todo: decide if removing this hurts flow.
       remove();
     } else {
-      alert('Sorry, no match. Try again!');
+      // alert('Sorry, no match. Try again!'); //todo: decide if removing this hurts flow.
       var misMatch1 = document.getElementsByName(parseInt(userChoices[0]));
       console.log(misMatch1);
       switchCards(misMatch1);
@@ -97,12 +104,13 @@ function compareMatches() {
       console.log(misMatch2);
       switchCards(misMatch2);
       console.log('no matches');
-    } if(attempts, username) {
-      memes = JSON.parse(attempts, username);
+    } if(userName, attempts) {
+      matchData = JSON.parse(matchData);
     } else {
-      localStorage.setItem('playerPersist', JSON.stringify(attempts, username));
+      localStorage.setItem('matchData', JSON.stringify(matchData));
     }
     userChoices = [];
+    endGame();
   }
 };
 
@@ -114,6 +122,16 @@ function remove() {
     removeItemEl.removeEventListener('click', click, false);
   }
 }
+
+function endGame() {
+  if (endMatch = true);{
+    console.log('game has ended!');
+    // var resultsEl = document.getElementById('results');
+    // //write to id=results from localStorage.getItem(playerPersist)
+    // resultsEl.appendChild(matchData);
+    // // create/reveal new game button(resets board) and/or new player button
+  }
+};
 
 // function to change cards
 function switchCards(htmlArray) {
@@ -138,4 +156,4 @@ function click() {
 
 populateDisplayMemes();
 makeCard();
-
+// endGame();
