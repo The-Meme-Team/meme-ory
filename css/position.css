@@ -12,9 +12,9 @@ h3  {
   margin: 0em;
 }
 
-h2 {
+/*h2 {
   margin: -1.938em 0 0px 4.35em;
-}
+}*/
 
 .logo-box {
   height: 3.3em;
@@ -81,18 +81,18 @@ h2 {
 
 .logo-center {
   position: relative;
-  left: 4em;
+  left: 5em;
   top: 0.3em;
 }
 
 a {
   position: relative;
-  left: 8em;
+  left: 12em;
   bottom: 2em;
 }
 
 .game-center {
   position: relative;
   left: 4em;
-  top: 0.4em;
+  top: 4.5em;
 }
