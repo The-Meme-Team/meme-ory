@@ -36,3 +36,8 @@ p {
 }
 /*font-family: 'Open Sans Condensed', sans-serif;*/
 /*font-family: 'Amatic SC', cursive;*/
+span.about{
+  font-family: 'Fira Sans Condensed';
+  color: #0AB5A9;
+  font-size: 24px;
+}
