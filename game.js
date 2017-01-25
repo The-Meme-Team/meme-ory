@@ -12,9 +12,13 @@ var matches = 0; // records number of matches user has made
 var attempts = 0; // records number of attempts user has made
 var clicks = 0;
 var madeMatch = false;
+var userName = localStorage.getItem('userName');
+userName = JSON.parse(userName);
 
 // Global DOM variable
 var gameEl = document.getElementById('game');
+var resultsEl = document.getElementById('results');
+var greetEl = document.getElementById('greet');
 
 function Meme(id, name) {
   this.id = id;
@@ -63,6 +67,7 @@ function populateDisplayMemes() {
 
 //function to make card
 function makeCard() {
+  greetEl.textContent = 'Hello ' + userName + '!';
   for (var j = 0; j < arrayName.length; j++) {
     var imgEl = document.createElement('img');
     imgEl.setAttribute('src', 'other-images/card-back.jpg');
@@ -133,6 +138,7 @@ function click() {
 function endGame() {
   if (matches === memeNumber) {
     console.log('end game');
+    resultsEl.textContent = userName + ': ' + attempts + ' attempts';
   }
 }
 
