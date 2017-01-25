@@ -10,6 +10,7 @@ var memeNumber = 8;
 var userChoices = []; // records id of clicks
 var matches = 0; // records number of matches user has made
 var attempts = 0; // records number of attempts user has made
+var clicks = 0;
 var madeMatch = false;
 
 // Global DOM variable
@@ -79,28 +80,23 @@ function compareMatches() {
     attempts++;
     console.log(attempts + ' = attempts');
     console.log('beginning compare function');
-  };
-  if (userChoices[0] === userChoices[1]) {
-    matches++;
-    //alert('You got a match!');
-    console.log(matches + ' + current total matches made');
-    remove();
-  } else {
-    var misMatch1 = document.getElementsByName(parseInt(userChoices[0]));
-    console.log(misMatch1);
-    for (var i = 0; i < misMatch1.length; i++) {
-      var imgEl = misMatch1[i];
-      imgEl.setAttribute('src', 'other-images/card-back.jpg');
+    if (userChoices[0] === userChoices[1]) {
+      matches++;
+      console.log(matches + ' + current total matches made');
+      alert('You made a match!');
+      remove();
+    } else {
+      alert('Sorry, no match. Try again!');
+      var misMatch1 = document.getElementsByName(parseInt(userChoices[0]));
+      console.log(misMatch1);
+      switchCards(misMatch1);
+      var misMatch2 = document.getElementsByName(parseInt(userChoices[1]));
+      console.log(misMatch2);
+      switchCards(misMatch2);
+      console.log('no matches');
     };
-    var misMatch2 = document.getElementsByName(parseInt(userChoices[1]));
-    console.log(misMatch2);
-    for (var i = 0; i < misMatch2.length; i++) {
-      var imgEl = misMatch2[i];
-      imgEl.setAttribute('src', 'other-images/card-back.jpg');
-    }
-    console.log('no matches');
+    userChoices = [];
   };
-  userChoices = [];
 };
 
 //function to remove event listener
@@ -111,6 +107,16 @@ function remove() {
     removeItemEl.removeEventListener('click', click, false);
   }
 }
+
+// function to change cards
+function switchCards(htmlArray) {
+  console.log('switch array runs');
+  for (var i = 0; i < htmlArray.length; i++) {
+    var imgEl = htmlArray[i];
+    imgEl.setAttribute('src', 'other-images/card-back.jpg');
+  }
+}
+
 //event listener function
 function click() {
   console.log(event.target);
@@ -120,9 +126,8 @@ function click() {
   console.log(nameEl);
   imgEl.setAttribute('src', 'memes/' + classEl + '.jpg');
   userChoices.push(nameEl);
+  setTimeout(compareMatches, 800);
 };
 
-//calling functions
 populateDisplayMemes();
 makeCard();
-compareMatches();
