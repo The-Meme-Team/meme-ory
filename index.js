@@ -8,9 +8,9 @@ function usernameElementSubmit(event) {
   event.preventDefault(); // prevent default behavior of event. in this case reset page
   event.stopPropagation();
 
-  var username = event.target.playerName.value;
-  console.log(username);
-  localStorage.data = JSON.stringify(username);
+  var userName = [event.target.playerName.value, 0];
+  console.log(userName);
+  localStorage.data = JSON.stringify(userName);
   console.log(localStorage.data);
   window.location.href = 'game.html';
 }
