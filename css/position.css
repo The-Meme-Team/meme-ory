@@ -77,6 +77,7 @@ h3  {
 
 .footer-legal {
   padding: 0.1em 0em;
+  margin: auto;
 }
 
 .logo-center {
@@ -95,4 +96,11 @@ a {
   position: relative;
   left: 4em;
   top: 4.5em;
+}
+.width {
+  width: inherit;
+  clear: both;
+}
+.clear {
+  clear: both;
 }
