@@ -9,9 +9,10 @@ var arrayName = [];
 var memeNumber = 8;
 var userChoices = []; // records id of clicks
 var matches = 0; // records number of matches user has made
-var attempts = 0; // records number of attempts user has made
+var attempts = []; // records number of attempts user has made
 var clicks = 0;
 var madeMatch = false;
+var username = localStorage.getItem('username');
 
 // Global DOM variable
 var gameEl = document.getElementById('game');
@@ -19,6 +20,7 @@ var gameEl = document.getElementById('game');
 function Meme(id, name) {
   this.id = id;
   this.name = name;
+  this.attempts = attempts;
   memes.push(this);
 }
 
@@ -78,6 +80,7 @@ function compareMatches() {
 // did user make two choices?
   if (userChoices.length === 2) {
     attempts++;
+    localStorage.setItem('playerPersist', JSON.stringify(attempts, username));
     console.log(attempts + ' = attempts');
     console.log('beginning compare function');
     if (userChoices[0] === userChoices[1]) {
@@ -94,9 +97,13 @@ function compareMatches() {
       console.log(misMatch2);
       switchCards(misMatch2);
       console.log('no matches');
-    };
+    } if(attempts, username) {
+      memes = JSON.parse(attempts, username);
+    } else {
+      localStorage.setItem('playerPersist', JSON.stringify(attempts, username));
+    }
     userChoices = [];
-  };
+  }
 };
 
 //function to remove event listener
