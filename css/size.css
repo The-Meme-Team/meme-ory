@@ -38,7 +38,12 @@ header, main, footer {
 
 .top-nav {
   height: 2em;
-  margin: 5em 0em;
+  margin: 5em 19em;
+}
+
+.top-game-nav {
+  height: 2em;
+  margin: 5em 6.5em;
 }
 
 .size-9 {
