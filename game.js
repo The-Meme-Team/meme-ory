@@ -139,6 +139,7 @@ function endGame() {
   if (matches === memeNumber) {
     //console.log('end game');
     greetEl.textContent = userName + ', you got it in ' + attempts + ' attempts!';
+    localStorage.setItem(userName, JSON.stringify(attempts));
   }
 }
 
