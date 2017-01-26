@@ -33,18 +33,22 @@ header, main, footer {
   margin: 0 auto;
 }
 
+.logo-box {
+  height: 6.5em;
+}
+
 .logo-font {
-  font-size: 4em;
+  font-size: 6em;
 }
 
 .top-nav {
-  height: 2em;
-  margin: 5em 15em;
+  height: 3em;
+  margin: 0.1em 0em 1em;
 }
 
 .top-game-nav {
-  height: 2em;
-  margin: 5em 4.5em;
+  height: 3em;
+  margin: 0.1em 0em;
 }
 
 .size-9 {
@@ -52,38 +56,48 @@ header, main, footer {
 }
 
 .size-10 {
-  font-size: 0.625em; }
+  font-size: 0.625em;
+}
 
 .size-12 {
-  font-size: 0.750em; }
+  font-size: 0.750em;
+}
 
 .size-14 {
   font-size: 0.875em;
-  }
+}
 
 .size-16 {
-  font-size: 1em; }
+  font-size: 1em;
+}
 
 .size-18 {
-  font-size: 1.125em; }
+  font-size: 1.125em;
+}
 
 .size-20 {
-  font-size: 1.250em; }
+  font-size: 1.250em;
+}
 
 .size-24 {
-  font-size: 1.5em; }
+  font-size: 1.5em;
+}
 
 .size-32 {
-  font-size: 2em; }
+  font-size: 2em;
+}
 
 .size-36 {
-  font-size: 2.25em; }
+  font-size: 2.25em;
+}
 
 .size-40 {
-  font-size: 2.500em; }
+  font-size: 2.500em;
+}
 
 .size-46 {
-  font-size: 2.875em; }
+  font-size: 2.875em;
+}
 
 .size-48 {
   font-size: 3em;
