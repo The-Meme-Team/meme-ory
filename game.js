@@ -3,19 +3,20 @@
 // Global variables
 var memes = [];
 var displayMemes = [];
+var displayMemes1 = [];
+var displayMemes2 = [];
+var arrayName = [];
+var memeNumber = 8;
 var userChoices = []; // records id of clicks
 var matches = 0; // records number of matches user has made
 var attempts = 0; // records number of attempts user has made
+var userName = localStorage.getItem('userName');
+userName = JSON.parse(userName);
 
 // Global DOM variable
 var gameEl = document.getElementById('game');
 var resultsEl = document.getElementById('results');
 var greetEl = document.getElementById('greet');
-var formEl = document.getElementById('restart-button-form');
-var userName = localStorage.getItem('userName');
-userName = JSON.parse(userName);
-var pastAttempts = localStorage.getItem(userName);
-pastAttempts = JSON.parse(pastAttempts);
 
 //constructor
 function Meme(id, name) {
@@ -34,44 +35,57 @@ var meme5 = new Meme(5, 'smug-spongebob');
 var meme6 = new Meme(6, 'success-kid');
 var meme7 = new Meme(7, 'trollface');
 
-// Function that will randomize an array
-function shuffleArray(array) {
-  for (var j = array.length - 1; j > 0; j--) {
-    var k = Math.floor(Math.random() * (j + 1));
-    var temp = array[j];
-    array[j] = array[k];
-    array[k] = temp;
-  }
-  return array;
+// Function that picks a random number
+function random() {
+  return Math.floor(Math.random() * memeNumber);
 }
 
 // Function that populates array
 function populateDisplayMemes() {
-  for (var i = 0; i < memes.length; i++) {
-    displayMemes.push(memes[i]);
-    displayMemes.push(memes[i]);
+  var item;
+  for (var i = 0; i < memeNumber; i++) {
+    do {
+      item = random();
+    } while (displayMemes1.includes(item));
+    displayMemes1.push(item);
+  };
+  for (var j = 0; j < memeNumber; j++) {
+    do {
+      item = random();
+    } while (displayMemes2.includes(item));
+    displayMemes2.push(item);
+  };
+  for (var k = 0; k < memeNumber; k++) {
+    displayMemes.push(displayMemes1[k]);
+    displayMemes.push(displayMemes2[k]);
+  };
+  for (var n = 0; n < displayMemes.length; n++){
+    arrayName.push(memes[displayMemes[n]]);
   }
-  shuffleArray(displayMemes);
 }
 
 //function to make card/ add event listener
 function makeCard() {
   greetEl.textContent = 'Hello ' + userName + '!';
-  for (var j = 0; j < displayMemes.length; j++) {
+  for (var j = 0; j < arrayName.length; j++) {
     var imgEl = document.createElement('img');
     imgEl.setAttribute('src', 'other-images/card-back.jpg');
-    imgEl.setAttribute('class', displayMemes[j].name);
-    imgEl.setAttribute('name', displayMemes[j].id);
+    imgEl.setAttribute('class', arrayName[j].name);
+    imgEl.setAttribute('name', arrayName[j].id);
     imgEl.addEventListener('click', click, false);
     gameEl.appendChild(imgEl);
   }
 }
+
+var timerEventStop = document.getElementById('game');
 
 //function to compare matches
 function compareMatches() {
 // did user make two choices?
   if (userChoices.length === 2) {
     attempts++;
+    //removal of event listener for clicks.
+    timerEventStop.removeEventListener('click', click, false);
     //console.log(attempts + ' = attempts');
     //console.log('beginning compare function');
     if (userChoices[0] === userChoices[1]) {
@@ -91,6 +105,7 @@ function compareMatches() {
       //console.log('no matches');
     }
     userChoices = [];
+    timerEventStop.addEventListener('click', click, false);
   }
 }
 
@@ -113,7 +128,7 @@ function switchCards(htmlArray) {
 }
 
 //event listener function change card/ call compare matches/ push user choice
-function click(event) {
+function click() {
   //console.log(event.target);
   var imgEl = event.target;
   var classEl = imgEl.getAttribute('class');
@@ -126,37 +141,10 @@ function click(event) {
 
 // function to end game and show results
 function endGame() {
-  if (matches === memes.length) {
+  if (matches === memeNumber) {
     //console.log('end game');
-    if (pastAttempts === null) {
-      greetEl.textContent = userName + ', you got it in ' + attempts + ' attempts!';
-      localStorage.setItem(userName, JSON.stringify(attempts));
-      restartButton();
-    } else {
-      greetEl.textContent = userName + ', you got it in ' + pastAttempts + ' attempts last time and ' + attempts + ' attempts this time.';
-      localStorage.setItem(userName, JSON.stringify(attempts));
-      restartButton();
-    }
+    greetEl.textContent = userName + ', you got it in ' + attempts + ' attempts!';
   }
-}
-
-// function to make restart game button
-function restartButton() {
-  var buttonEl = document.createElement('button');
-  buttonEl.setAttribute('class', 'font size-32 text-dark');
-  buttonEl.setAttribute('type', 'submit');
-  buttonEl.setAttribute('id', 'restart-button');
-  buttonEl.textContent = 'Restart Game!';
-  buttonEl.addEventListener('submit', submit, false);
-  formEl.appendChild(buttonEl);
-}
-
-//event listener function to restart game
-function submit(event) {
-  event.preventDefault();
-  event.stopPropagation();
-  populateDisplayMemes();
-  makeCard();
 }
 
 //call functions
