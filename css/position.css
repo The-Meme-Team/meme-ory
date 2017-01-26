@@ -85,6 +85,6 @@ h3  {
   clear: both;
 }
 
-game-top-nav, a {
-  margin: -1.6em 11.3em;
+.top-nav, a {
+  margin: -1em 11.3em;
 }
