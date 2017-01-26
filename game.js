@@ -52,6 +52,7 @@ function populateDisplayMemes() {
     displayMemes.push(memes[i]);
   }
   shuffleArray(displayMemes);
+  shuffleArray(displayMemes);
 }
 
 //function to make card/ add event listener
