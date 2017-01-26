@@ -51,6 +51,10 @@ header, main, footer {
   margin: 0.1em 0em;
 }
 
+.margin {
+  margin: 0.4em;
+}
+
 .size-9 {
   font-size: 0.563em
 }
