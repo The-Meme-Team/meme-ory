@@ -9,7 +9,6 @@ var attempts = 0; // records number of attempts user has made
 
 // Global DOM variable
 var gameEl = document.getElementById('game');
-var resultsEl = document.getElementById('results');
 var greetEl = document.getElementById('greet');
 var formEl = document.getElementById('restart-button-form');
 var userName = localStorage.getItem('userName');
@@ -72,14 +71,12 @@ function makeCard() {
 function compareMatches() {
 // did user make two choices?
   if (userChoices.length === 2) {
-    //false boolean turns off event
     attempts++;
     //console.log(attempts + ' = attempts');
     //console.log('beginning compare function');
     if (userChoices[0] === userChoices[1]) {
       matches++;
       //console.log(matches + ' + current total matches made');
-      //alert('You made a match!');
       remove();
       endGame();
     } else {
@@ -97,7 +94,7 @@ function compareMatches() {
   }
 }
 
-//function to remove event listener
+//function to remove event listener on card
 function remove() {
   var removeEl = document.getElementsByName(parseInt(userChoices[0]));
   for (var j = 0; j < removeEl.length; j++){
@@ -106,42 +103,9 @@ function remove() {
   }
 }
 
-function removeWrapper() {
-  wrapperEl.removeEventListener('mousemove', move, false);
-}
-
-// function to revert cards
-function switchCards(htmlArray) {
-  //console.log('switch array runs');
-  for (var i = 0; i < htmlArray.length; i++) {
-    var imgEl = htmlArray[i];
-    imgEl.setAttribute('src', 'other-images/card-back.jpg');
-    //event boolean true again
-  }
-}
-
-//event listener function change card/ call compare matches/ push user choice
-function click(event) {
-  //console.log(event.target);
-  var imgEl = event.target;
-  var classEl = imgEl.getAttribute('class');
-  var nameEl = imgEl.getAttribute('name');
-  //console.log(nameEl);
-  imgEl.setAttribute('src', 'memes/' + classEl + '.jpg');
-  userChoices.push(nameEl);
-  if (userChoices.length === 2){
-    wrapperEl.addEventListener('mousemove', move, false);
-  }
-  //setTimeout(compareMatches, 800);
-}
-
-function move(event) {
-  compareMatches();
-}
 // function to end game and show results
 function endGame() {
   if (matches === memes.length) {
-    //console.log('end game');
     if (pastAttempts === null) {
       greetEl.textContent = userName + ', you got it in ' + attempts + ' attempts!';
       localStorage.setItem(userName, JSON.stringify(attempts));
@@ -154,6 +118,20 @@ function endGame() {
   }
 }
 
+// function to revert cards
+function switchCards(htmlArray) {
+  //console.log('switch array runs');
+  for (var i = 0; i < htmlArray.length; i++) {
+    var imgEl = htmlArray[i];
+    imgEl.setAttribute('src', 'other-images/card-back.jpg');
+  }
+}
+
+//function to remove event listener on wrapper
+function removeWrapper() {
+  wrapperEl.removeEventListener('mousemove', move, false);
+}
+
 // function to make restart game button
 function restartButton() {
   var buttonEl = document.createElement('button');
@@ -163,6 +141,24 @@ function restartButton() {
   buttonEl.textContent = 'Restart Game!';
   buttonEl.addEventListener('submit', submit, false);
   formEl.appendChild(buttonEl);
+}
+//event listener function change card/ call compare matches/ push user choice
+function click(event) {
+  //console.log(event.target);
+  var imgEl = event.target;
+  var classEl = imgEl.getAttribute('class');
+  var nameEl = imgEl.getAttribute('name');
+  //console.log(nameEl);
+  imgEl.setAttribute('src', 'memes/' + classEl + '.jpg');
+  userChoices.push(nameEl);
+  if (userChoices.length === 2){
+    wrapperEl.addEventListener('mousemove', move, false);
+  }
+}
+
+//event listener function for mouse move
+function move(event) {
+  compareMatches();
 }
 
 //event listener function to restart game
