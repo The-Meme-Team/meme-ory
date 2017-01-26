@@ -16,6 +16,7 @@ var userName = localStorage.getItem('userName');
 userName = JSON.parse(userName);
 var pastAttempts = localStorage.getItem(userName);
 pastAttempts = JSON.parse(pastAttempts);
+var wrapperEl = document.getElementById('wrapper');
 
 //constructor
 function Meme(id, name) {
@@ -71,17 +72,18 @@ function makeCard() {
 function compareMatches() {
 // did user make two choices?
   if (userChoices.length === 2) {
+    //false boolean turns off event
     attempts++;
     //console.log(attempts + ' = attempts');
     //console.log('beginning compare function');
     if (userChoices[0] === userChoices[1]) {
       matches++;
       //console.log(matches + ' + current total matches made');
-      alert('You made a match!');
+      //alert('You made a match!');
       remove();
       endGame();
     } else {
-      alert('Sorry, no match. Try again!');
+      //alert('Sorry, no match. Try again!');
       var misMatch1 = document.getElementsByName(parseInt(userChoices[0]));
       //console.log(misMatch1);
       switchCards(misMatch1);
@@ -91,6 +93,7 @@ function compareMatches() {
       //console.log('no matches');
     }
     userChoices = [];
+    removeWrapper();
   }
 }
 
@@ -103,12 +106,17 @@ function remove() {
   }
 }
 
+function removeWrapper() {
+  wrapperEl.removeEventListener('mousemove', move, false);
+}
+
 // function to revert cards
 function switchCards(htmlArray) {
   //console.log('switch array runs');
   for (var i = 0; i < htmlArray.length; i++) {
     var imgEl = htmlArray[i];
     imgEl.setAttribute('src', 'other-images/card-back.jpg');
+    //event boolean true again
   }
 }
 
@@ -121,9 +129,15 @@ function click(event) {
   //console.log(nameEl);
   imgEl.setAttribute('src', 'memes/' + classEl + '.jpg');
   userChoices.push(nameEl);
-  setTimeout(compareMatches, 800);
+  if (userChoices.length === 2){
+    wrapperEl.addEventListener('mousemove', move, false);
+  }
+  //setTimeout(compareMatches, 800);
 }
 
+function move(event) {
+  compareMatches();
+}
 // function to end game and show results
 function endGame() {
   if (matches === memes.length) {
