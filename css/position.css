@@ -71,9 +71,11 @@ h3  {
 }
 
 .game-center {
-  padding-left: 17.5em;
+  padding-left: 16.9em;
   max-width: 54em;
   min-width: 54em;
+  max-height: 54em;
+  min-height: 54em;
 }
 
 .width {

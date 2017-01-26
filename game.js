@@ -9,7 +9,6 @@ var attempts = 0; // records number of attempts user has made
 
 // Global DOM variable
 var gameEl = document.getElementById('game');
-var resultsEl = document.getElementById('results');
 var greetEl = document.getElementById('greet');
 var formEl = document.getElementById('restart-button-form');
 var userName = localStorage.getItem('userName');
