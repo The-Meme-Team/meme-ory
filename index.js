@@ -9,8 +9,6 @@ function usernameElementSubmit(event) {
   event.stopPropagation();
 
   var userName = event.target.playerName.value;
-  console.log(userName);
   localStorage.setItem('userName', JSON.stringify(userName));
-  //console.log(localStorage.matchData);
   window.location.href = 'game.html';
 }
