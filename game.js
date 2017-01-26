@@ -72,7 +72,6 @@ function makeCard() {
 function compareMatches() {
 // did user make two choices?
   if (userChoices.length === 2) {
-    //false boolean turns off event
     attempts++;
     //console.log(attempts + ' = attempts');
     //console.log('beginning compare function');
@@ -93,7 +92,7 @@ function compareMatches() {
       //console.log('no matches');
     }
     userChoices = [];
-    removeWrapper();
+    //removeWrapper();
   }
 }
 
@@ -116,7 +115,6 @@ function switchCards(htmlArray) {
   for (var i = 0; i < htmlArray.length; i++) {
     var imgEl = htmlArray[i];
     imgEl.setAttribute('src', 'other-images/card-back.jpg');
-    //event boolean true again
   }
 }
 
@@ -127,11 +125,15 @@ function click(event) {
   var classEl = imgEl.getAttribute('class');
   var nameEl = imgEl.getAttribute('name');
   //console.log(nameEl);
-  imgEl.setAttribute('src', 'memes/' + classEl + '.jpg');
-  userChoices.push(nameEl);
-  if (userChoices.length === 2){
-    wrapperEl.addEventListener('mousemove', move, false);
+  if (userChoices.length < 2){
+    imgEl.setAttribute('src', 'memes/' + classEl + '.jpg');
+    userChoices.push(nameEl);
+  } else {
+    compareMatches();
   }
+  // if (userChoices.length === 2){
+  //   wrapperEl.addEventListener('mousemove', move, false);
+  // }
   //setTimeout(compareMatches, 800);
 }
 
