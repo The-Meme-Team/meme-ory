@@ -6,14 +6,16 @@ var displayMemes = [];
 var userChoices = []; // records id of clicks
 var matches = 0; // records number of matches user has made
 var attempts = 0; // records number of attempts user has made
-var userName = localStorage.getItem('userName');
-userName = JSON.parse(userName);
 
 // Global DOM variable
 var gameEl = document.getElementById('game');
 var resultsEl = document.getElementById('results');
 var greetEl = document.getElementById('greet');
 var formEl = document.getElementById('restart-button-form');
+var userName = localStorage.getItem('userName');
+userName = JSON.parse(userName);
+var pastAttempts = localStorage.getItem(userName);
+pastAttempts = JSON.parse(pastAttempts);
 
 //constructor
 function Meme(id, name) {
@@ -126,9 +128,15 @@ function click(event) {
 function endGame() {
   if (matches === memes.length) {
     //console.log('end game');
-    greetEl.textContent = userName + ', you got it in ' + attempts + ' attempts!';
-    localStorage.setItem(userName, JSON.stringify(attempts));
-    restartButton();
+    if (pastAttempts === null) {
+      greetEl.textContent = userName + ', you got it in ' + attempts + ' attempts!';
+      localStorage.setItem(userName, JSON.stringify(attempts));
+      restartButton();
+    } else {
+      greetEl.textContent = userName + ', you got it in ' + pastAttempts + ' attempts last time and ' + attempts + ' attempts this time.';
+      localStorage.setItem(userName, JSON.stringify(attempts));
+      restartButton();
+    }
   }
 }
 
