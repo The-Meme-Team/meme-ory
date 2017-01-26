@@ -3,10 +3,6 @@
 // Global variables
 var memes = [];
 var displayMemes = [];
-var displayMemes1 = [];
-var displayMemes2 = [];
-var arrayName = [];
-var memeNumber = 8;
 var userChoices = []; // records id of clicks
 var matches = 0; // records number of matches user has made
 var attempts = 0; // records number of attempts user has made
@@ -36,43 +32,34 @@ var meme5 = new Meme(5, 'smug-spongebob');
 var meme6 = new Meme(6, 'success-kid');
 var meme7 = new Meme(7, 'trollface');
 
-// Function that picks a random number
-function random() {
-  return Math.floor(Math.random() * memeNumber);
+// Function that will randomize an array
+function shuffleArray(array) {
+  for (var j = array.length - 1; j > 0; j--) {
+    var k = Math.floor(Math.random() * (j + 1));
+    var temp = array[j];
+    array[j] = array[k];
+    array[k] = temp;
+  }
+  return array;
 }
 
 // Function that populates array
 function populateDisplayMemes() {
-  var item;
-  for (var i = 0; i < memeNumber; i++) {
-    do {
-      item = random();
-    } while (displayMemes1.includes(item));
-    displayMemes1.push(item);
-  };
-  for (var j = 0; j < memeNumber; j++) {
-    do {
-      item = random();
-    } while (displayMemes2.includes(item));
-    displayMemes2.push(item);
-  };
-  for (var k = 0; k < memeNumber; k++) {
-    displayMemes.push(displayMemes1[k]);
-    displayMemes.push(displayMemes2[k]);
-  };
-  for (var n = 0; n < displayMemes.length; n++){
-    arrayName.push(memes[displayMemes[n]]);
+  for (var i = 0; i < memes.length; i++) {
+    displayMemes.push(memes[i]);
+    displayMemes.push(memes[i]);
   }
+  shuffleArray(displayMemes);
 }
 
 //function to make card/ add event listener
 function makeCard() {
   greetEl.textContent = 'Hello ' + userName + '!';
-  for (var j = 0; j < arrayName.length; j++) {
+  for (var j = 0; j < displayMemes.length; j++) {
     var imgEl = document.createElement('img');
     imgEl.setAttribute('src', 'other-images/card-back.jpg');
-    imgEl.setAttribute('class', arrayName[j].name);
-    imgEl.setAttribute('name', arrayName[j].id);
+    imgEl.setAttribute('class', displayMemes[j].name);
+    imgEl.setAttribute('name', displayMemes[j].id);
     imgEl.addEventListener('click', click, false);
     gameEl.appendChild(imgEl);
   }
@@ -137,7 +124,7 @@ function click(event) {
 
 // function to end game and show results
 function endGame() {
-  if (matches === memeNumber) {
+  if (matches === memes.length) {
     //console.log('end game');
     greetEl.textContent = userName + ', you got it in ' + attempts + ' attempts!';
     localStorage.setItem(userName, JSON.stringify(attempts));
