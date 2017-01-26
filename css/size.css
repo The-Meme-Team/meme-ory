@@ -33,18 +33,22 @@ header, main, footer {
   margin: 0 auto;
 }
 
+.logo-box {
+  height: 6.5em;
+}
+
 .logo-font {
-  font-size: 4em;
+  font-size: 6em;
 }
 
 .top-nav {
-  height: 2em;
-  margin: 5em 15em;
+  height: 3em;
+  margin: 0.1em 0em;
 }
 
 .top-game-nav {
-  height: 2em;
-  margin: 5em 4.5em;
+  height: 3em;
+  margin: 0.1em 0em;
 }
 
 .size-9 {
