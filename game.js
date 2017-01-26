@@ -17,6 +17,7 @@ userName = JSON.parse(userName);
 var gameEl = document.getElementById('game');
 var resultsEl = document.getElementById('results');
 var greetEl = document.getElementById('greet');
+var formEl = document.getElementById('restart-button-form');
 
 //constructor
 function Meme(id, name) {
@@ -123,7 +124,7 @@ function switchCards(htmlArray) {
 }
 
 //event listener function change card/ call compare matches/ push user choice
-function click() {
+function click(event) {
   //console.log(event.target);
   var imgEl = event.target;
   var classEl = imgEl.getAttribute('class');
@@ -140,7 +141,27 @@ function endGame() {
     //console.log('end game');
     greetEl.textContent = userName + ', you got it in ' + attempts + ' attempts!';
     localStorage.setItem(userName, JSON.stringify(attempts));
+    restartButton();
   }
+}
+
+// function to make restart game button
+function restartButton() {
+  var buttonEl = document.createElement('button');
+  buttonEl.setAttribute('class', 'font size-32 text-dark');
+  buttonEl.setAttribute('type', 'submit');
+  buttonEl.setAttribute('id', 'restart-button');
+  buttonEl.textContent = 'Restart Game!';
+  buttonEl.addEventListener('submit', submit, false);
+  formEl.appendChild(buttonEl);
+}
+
+//event listener function to restart game
+function submit(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  populateDisplayMemes();
+  makeCard();
 }
 
 //call functions
